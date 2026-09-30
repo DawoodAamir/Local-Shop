@@ -1,0 +1,30 @@
+name: Local Shop checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 -m unittest discover -s Server -v
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Core tests
+        run: |
+          swift test
+          swift test -c release
+      - name: Release build
+        run: xcodebuild -project 'Local Shop.xcodeproj' -scheme 'Local Shop' -configuration Release -sdk iphonesimulator -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+      - name: Simulator shopping flows
+        run: bash Scripts/test-ui.sh
+      - name: Test results
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: simulator-results
+          path: build/Shopping.xcresult

@@ -79,6 +79,24 @@ class ShopTests(unittest.TestCase):
         with self.assertRaises(APIError): shop.refresh(self.owner, order["id"])
         paid["amount_total"] = 5295
         self.assertEqual(shop.refresh(self.owner, order["id"])["status"], "test_paid")
+    def test_provider_timeout_retry_reuses_saved_order_id(self):
+        shop = Shop(self.shop.path, "sk_test_fixture")
+        keys = []
+        def first_attempt(method, path, fields=None, key=None):
+            keys.append(key)
+            raise APIError(502, "Provider timeout")
+        shop.stripe = first_attempt
+        request_key = str(uuid.uuid4())
+        with self.assertRaises(APIError):
+            shop.checkout(self.owner, request_body(), request_key)
+        def retry(method, path, fields=None, key=None):
+            keys.append(key)
+            return {"id": "cs_test_retry", "url": "https://checkout.stripe.com/test", "livemode": False}
+        shop.stripe = retry
+        order = shop.checkout(self.owner, request_body(), request_key)
+        self.assertEqual(keys, [order["id"], order["id"]])
+        self.assertEqual(len(shop.orders(self.owner)), 1)
+
     def test_invalid_address_rejected(self):
         payload = request_body(); payload["address"]["postalCode"] = "123"
         with self.assertRaises(APIError): self.shop.checkout(self.owner, payload, str(uuid.uuid4()))
