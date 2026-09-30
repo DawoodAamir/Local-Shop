@@ -1,0 +1,90 @@
+[
+  {
+    "id": "mug",
+    "name": "Everyday mug",
+    "category": "Kitchen",
+    "price": 2400,
+    "tagline": "Warm clay. A slower morning.",
+    "description": "A generous stoneware mug with a satin glaze and a comfortable handle. Each piece has subtle variations.",
+    "details": "350 ml \u00b7 Dishwasher safe",
+    "art": "mug",
+    "tone": "clay"
+  },
+  {
+    "id": "tote",
+    "name": "Market tote",
+    "category": "Everyday",
+    "price": 1800,
+    "tagline": "For the long way home.",
+    "description": "A sturdy cotton canvas tote with wide straps and an inside pocket. Folds flat between errands.",
+    "details": "Organic cotton \u00b7 38 \u00d7 42 cm",
+    "art": "tote",
+    "tone": "sage"
+  },
+  {
+    "id": "lamp",
+    "name": "Table light",
+    "category": "Living",
+    "price": 6800,
+    "tagline": "A little warmth, anywhere.",
+    "description": "A compact table lamp with a warm diffused glow, a powder-coated base, and an inline switch.",
+    "details": "LED included \u00b7 1.8 m cable",
+    "art": "lamp",
+    "tone": "ochre"
+  },
+  {
+    "id": "bowl",
+    "name": "Serving bowl",
+    "category": "Kitchen",
+    "price": 3600,
+    "tagline": "Made for the middle of the table.",
+    "description": "An understated stoneware serving bowl for shared salads, seasonal fruit, and everyday meals.",
+    "details": "24 cm diameter \u00b7 Dishwasher safe",
+    "art": "bowl",
+    "tone": "sand"
+  },
+  {
+    "id": "notebook",
+    "name": "Daily notebook",
+    "category": "Everyday",
+    "price": 1600,
+    "tagline": "Make room for a thought.",
+    "description": "A clothbound notebook with lay-flat binding, numbered pages, and enough space to work things out.",
+    "details": "192 dotted pages \u00b7 A5",
+    "art": "notebook",
+    "tone": "ink"
+  },
+  {
+    "id": "vase",
+    "name": "Stem vase",
+    "category": "Living",
+    "price": 3200,
+    "tagline": "One stem is enough.",
+    "description": "A small ceramic vase with a narrow opening and a softly textured finish. A quiet detail for a shelf or desk.",
+    "details": "18 cm tall \u00b7 Watertight",
+    "art": "vase",
+    "tone": "clay"
+  },
+  {
+    "id": "linen",
+    "name": "Linen napkins",
+    "category": "Kitchen",
+    "price": 2800,
+    "tagline": "The everyday table, considered.",
+    "description": "A pair of washed linen napkins that soften with use. Hemmed edges and a relaxed, natural texture.",
+    "details": "Set of 2 \u00b7 45 \u00d7 45 cm",
+    "art": "linen",
+    "tone": "sage"
+  },
+  {
+    "id": "tray",
+    "name": "Catchall tray",
+    "category": "Living",
+    "price": 2200,
+    "tagline": "A place for the small things.",
+    "description": "An oval tray for keys, glasses, or the objects you reach for on your way out. Made from sealed beech.",
+    "details": "22 \u00d7 12 cm \u00b7 Wipe clean",
+    "art": "tray",
+    "tone": "sand"
+  }
+]
