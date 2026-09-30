@@ -102,7 +102,7 @@ struct CheckoutView: View {
           VStack(spacing: 22) {
             Image(systemName: placed.checkoutURL == nil ? "checkmark.circle" : "creditcard").font(
               .system(size: 52, weight: .light)
-            ).foregroundColor(Style.green)
+            ).foregroundColor(Style.status)
             Text(
               placed.checkoutURL == nil
                 ? "Thank you, \(placed.address.name.components(separatedBy: " ").first ?? "friend")."

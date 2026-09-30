@@ -4,12 +4,24 @@ import SwiftUI
 struct LocalShopApp: App {
   @StateObject private var store = ShopStore()
   var body: some Scene {
-    WindowGroup { ShopRoot().environmentObject(store).tint(Style.accent) }
+    WindowGroup { ShopRoot().environmentObject(store).tint(Style.tint) }
   }
 }
 
 enum Style {
   static let accent = Color(red: 0.62, green: 0.25, blue: 0.15)
+  static let tint = Color(
+    UIColor { traits in
+      traits.userInterfaceStyle == .dark
+        ? UIColor(red: 0.94, green: 0.59, blue: 0.43, alpha: 1)
+        : UIColor(red: 0.62, green: 0.25, blue: 0.15, alpha: 1)
+    })
+  static let status = Color(
+    UIColor { traits in
+      traits.userInterfaceStyle == .dark
+        ? UIColor(red: 0.62, green: 0.77, blue: 0.63, alpha: 1)
+        : UIColor(red: 0.24, green: 0.36, blue: 0.28, alpha: 1)
+    })
   static let canvas = Color(UIColor.systemGroupedBackground)
   static let panel = Color(UIColor.secondarySystemGroupedBackground)
   static let green = Color(red: 0.24, green: 0.36, blue: 0.28)
@@ -62,7 +74,7 @@ struct EmptyState: View {
   var body: some View {
     VStack(spacing: 14) {
       Image(systemName: symbol).font(.system(size: 36, weight: .light)).foregroundColor(
-        Style.accent)
+        Style.tint)
       Text(title).font(.title2.weight(.semibold))
       Text(message).font(.body).foregroundColor(.secondary).multilineTextAlignment(.center)
     }.padding(32).frame(maxWidth: .infinity)

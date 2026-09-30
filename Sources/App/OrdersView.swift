@@ -24,7 +24,7 @@ struct OrdersView: View {
             Text(order.quote.lines.map { "\($0.quantity) × \($0.name)" }.joined(separator: ", "))
               .font(.subheadline).foregroundColor(.secondary).lineLimit(2)
             Text(order.statusTitle).font(.caption.weight(.medium)).foregroundColor(
-              order.status == "awaiting_payment" ? Style.accent : Style.green)
+              order.status == "awaiting_payment" ? Style.tint : Style.status)
           }.padding(.vertical, 8)
         }
       }
@@ -58,7 +58,7 @@ struct OrderDetail: View {
           Label(
             order.statusTitle,
             systemImage: order.status == "awaiting_payment" ? "clock" : "checkmark.circle"
-          ).font(.headline).foregroundColor(Style.green)
+          ).font(.headline).foregroundColor(Style.status)
           Text("Order \(order.id.prefix(8).uppercased())").font(.system(.title, design: .serif))
           Text(order.date, style: .date).foregroundColor(.secondary)
           ForEach(order.quote.lines, id: \.productID) { line in

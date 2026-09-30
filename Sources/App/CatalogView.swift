@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CatalogView: View {
   @EnvironmentObject var store: ShopStore
+  @ScaledMetric(relativeTo: .largeTitle) private var headingSize = 40.0
   @State private var search = ""
   @State private var category = "All"
   @State private var sort = "Featured"
@@ -22,14 +23,14 @@ struct CatalogView: View {
       VStack(alignment: .leading, spacing: 24) {
         HStack {
           Label(store.isDemo ? "DEMO COLLECTION" : "TEST STOREFRONT", systemImage: "circle.fill")
-            .font(.caption2.weight(.semibold)).foregroundColor(Style.green)
+            .font(.caption2.weight(.semibold)).foregroundColor(Style.status)
           Spacer()
           Text("USD · US delivery").font(.caption).foregroundColor(.secondary)
         }
         if search.isEmpty && category == "All" {
           VStack(alignment: .leading, spacing: 12) {
             Text("Good things.\nEvery day.").font(
-              .system(size: 40, weight: .regular, design: .serif)
+              .system(size: headingSize, weight: .regular, design: .serif)
             ).tracking(-1)
             Text("Useful pieces for the way you live.").foregroundColor(.secondary)
             HStack(spacing: 7) {
@@ -115,7 +116,7 @@ struct ProductDetail: View {
         HStack(alignment: .top) {
           VStack(alignment: .leading, spacing: 8) {
             Text(product.category.uppercased()).font(.caption.weight(.semibold)).tracking(2)
-              .foregroundColor(Style.accent)
+              .foregroundColor(Style.tint)
             Text(product.name).font(.system(.largeTitle, design: .serif))
           }
           Spacer()
